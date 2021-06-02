@@ -30,7 +30,7 @@ class CommentsController extends Controller
             if(!$existsMovie)  throw new Exception("No existe el id de la pelicula en Api externa");
 
             $fields = $request->all();
-            $fields['user_id'] = 1;
+            $fields['user_id'] = Auth::user()->id;
             $comment = Comment::create( $fields );
 
             \DB::commit();
